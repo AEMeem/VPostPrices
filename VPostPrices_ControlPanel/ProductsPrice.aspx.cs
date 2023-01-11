@@ -71,22 +71,27 @@ namespace VPostPrices_ControlPanel
                     SqlConnection Scon2 = new SqlConnection(ConnectionString);
                     SqlConnection Scon3 = new SqlConnection(ConnectionString);
                     SqlConnection Scon4 = new SqlConnection(ConnectionString);
+                    SqlConnection Scon5 = new SqlConnection(ConnectionString);
                     SqlCommand ProductCommnad = new SqlCommand("SELECT Id,NameAr FROM dbo.Products WHERE IsDelete=0", Scon1);
                     SqlCommand CountrCommand = new SqlCommand("SELECT CountryID,CountryNameAR FROM dbo.Countries WHERE IsDelete=0", Scon2);
                     SqlCommand VendorCommand = new SqlCommand("SELECT Id,NameAR FROM dbo.Vendors WHERE IsDelete=0", Scon3);
                     SqlCommand CalctypeCommnad = new SqlCommand("SELECT Id,NameAr FROM dbo.CalcTypes WHERE IsDelete=0", Scon4);
+                    SqlCommand PriceRoleCommnad = new SqlCommand("SELECT Id,Value_Ar FROM dbo.PricingRoles WHERE IsDelete=0", Scon4);
                     SqlDataAdapter DA1 = new SqlDataAdapter(ProductCommnad);
                     SqlDataAdapter DA2 = new SqlDataAdapter(CountrCommand);
                     SqlDataAdapter DA3 = new SqlDataAdapter(VendorCommand);
                     SqlDataAdapter DA4 = new SqlDataAdapter(CalctypeCommnad);
+                    SqlDataAdapter DA5 = new SqlDataAdapter(PriceRoleCommnad);
                     DataSet DS1 = new DataSet();
                     DataSet DS2 = new DataSet();
                     DataSet DS3 = new DataSet();
                     DataSet DS4 = new DataSet();
+                    DataSet DS5 = new DataSet();
                     DA1.Fill(DS1);
                     DA2.Fill(DS2);
                     DA3.Fill(DS3);
                     DA4.Fill(DS4);
+                    DA5.Fill(DS5);
                     AddProductDDL.DataSource = DS1;
                     AddProductDDL.DataTextField = "NameAr";
                     AddProductDDL.DataValueField = "Id";
@@ -105,10 +110,16 @@ namespace VPostPrices_ControlPanel
                     AddCalcTypeDDl.DataTextField = "NameAr";
                     AddCalcTypeDDl.DataValueField = "Id";
                     AddCalcTypeDDl.DataBind();
-                    Scon1.Close();
+
+                    addPricingRoleDDL.DataSource = DS5;
+                    addPricingRoleDDL.DataTextField = "Value_Ar";
+                    addPricingRoleDDL.DataValueField = "Id";
+                    addPricingRoleDDL.DataBind();
+                Scon1.Close();
                     Scon2.Close();
                     Scon3.Close();
                     Scon4.Close();
+                    Scon5.Close();
 
 
             }
@@ -140,15 +151,18 @@ namespace VPostPrices_ControlPanel
             DropDownList VendorDDL = ((DropDownList)GridView1.Rows[e.RowIndex].FindControl("VendorDDL"));
             DropDownList CalcTypeDDL = ((DropDownList)GridView1.Rows[e.RowIndex].FindControl("CalcTypesDDl"));
             DropDownList ProductDDL = ((DropDownList)GridView1.Rows[e.RowIndex].FindControl("ProductsDDL"));
+            DropDownList PricingRoleDDl = ((DropDownList)GridView1.Rows[e.RowIndex].FindControl("PricingRoleDDl"));
             String ContrySelect = CountryDDL.SelectedValue;
             String VendorSelect = VendorDDL.SelectedValue;
             String CalcTypeSelect = CalcTypeDDL.SelectedValue;
             String ProductSelect = ProductDDL.SelectedValue.ToString();
+            String PricingRoleSelect = PricingRoleDDl.SelectedValue.ToString();
 
             SqlDataSource1.UpdateParameters["ProductID"].DefaultValue = ProductSelect;
             SqlDataSource1.UpdateParameters["CountryID"].DefaultValue = ContrySelect;
             SqlDataSource1.UpdateParameters["VendorID"].DefaultValue = VendorSelect;
             SqlDataSource1.UpdateParameters["CalcTypeId"].DefaultValue = CalcTypeSelect;
+            SqlDataSource1.UpdateParameters["PricingRoleId"].DefaultValue = PricingRoleSelect;
 
             SqlDataSource1.UpdateParameters["UpdateBy"].DefaultValue= "ayman";
             SqlDataSource1.UpdateParameters["UpdateDate"].DefaultValue = UpdateDate;
@@ -164,6 +178,7 @@ namespace VPostPrices_ControlPanel
                         SCom.Parameters.AddWithValue("@Id",Convert.ToString(((Label)GridView1.Rows[e.RowIndex].FindControl("Id")).Text));
                         SCom.Parameters.AddWithValue("@ProductID", ProductSelect);
                         SCom.Parameters.AddWithValue("@CountryID", Convert.ToInt32(ContrySelect));
+                        SCom.Parameters.AddWithValue("@PricingRoleId", Convert.ToInt32(ContrySelect));
                         SCom.Parameters.AddWithValue("@VendorID", Convert.ToInt32(VendorSelect));
                         SCom.Parameters.AddWithValue("@CalcTypeId", Convert.ToInt32(CalcTypeSelect));
                         SCom.Parameters.AddWithValue("@IncreamentValue", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox1")).Text));
@@ -173,9 +188,10 @@ namespace VPostPrices_ControlPanel
                         SCom.Parameters.AddWithValue("@MinAmount", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox7")).Text));
                         SCom.Parameters.AddWithValue("@MaxAmount", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox8")).Text));
                         SCom.Parameters.AddWithValue("@IsPercntage", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[9].Controls[0]).Checked));
+                        SCom.Parameters.AddWithValue("@IsPriceChange", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[10].Controls[0]).Checked));
                         SCom.Parameters.AddWithValue("@Amount", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox5")).Text));
                         SCom.Parameters.AddWithValue("@ApplyOrder", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox6")).Text));
-                        SCom.Parameters.AddWithValue("@IsActive", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[12].Controls[0]).Checked));
+                        SCom.Parameters.AddWithValue("@IsActive", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[13].Controls[0]).Checked));
                         SCom.Parameters.AddWithValue("@UpdateBy", "ayman");
                         SCom.Parameters.AddWithValue("@UpdateDate",UpdateDate);
                         SCon.Open();
@@ -199,18 +215,22 @@ namespace VPostPrices_ControlPanel
             DropDownList VendorDDL = (DropDownList)e.Row.FindControl("VendorDDL");
             DropDownList CalcTypeDDL = (DropDownList)e.Row.FindControl("CalcTypesDDl");
             DropDownList ProductsDDL = (DropDownList)e.Row.FindControl("ProductsDDL");
+            DropDownList PricingRoleDDL = (DropDownList)e.Row.FindControl("PricingRoleDDL");
             SqlConnection Scon1 = null;
             SqlConnection Scon2 = null;
             SqlConnection Scon3 = null;
             SqlConnection Scon4 = null;
+            SqlConnection Scon5 = null;
             SqlCommand ContryDDLCommand = null;
             SqlCommand VendorDDLCommand = null;
             SqlCommand CalcTypeDDLCommand = null;
             SqlCommand ProductDDLCommnad = null;
+            SqlCommand PricingRoleDDLCommnad = null;
             DataSet DS1 = new DataSet();
             DataSet DS2 = new DataSet();
             DataSet DS3 = new DataSet();
             DataSet DS4 = new DataSet();
+            DataSet DS5 = new DataSet();
 
 
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -224,22 +244,27 @@ namespace VPostPrices_ControlPanel
                             Scon2 = new SqlConnection(ConnectionString);
                             Scon3 = new SqlConnection(ConnectionString);
                             Scon4 = new SqlConnection(ConnectionString);
+                            Scon5 = new SqlConnection(ConnectionString);
                             ContryDDLCommand = new SqlCommand("SELECT CountryID,CountryNameAR FROM dbo.Countries",Scon1);
                             VendorDDLCommand = new SqlCommand("SELECT Id,NameAR FROM dbo.Vendors",Scon2);
                             CalcTypeDDLCommand = new SqlCommand("SELECT Id,NameAr FROM dbo.CalcTypes", Scon3);
                             ProductDDLCommnad = new SqlCommand("SELECT Id,NameAr FROM dbo.Products WHERE IsDelete=0", Scon4);
+                            PricingRoleDDLCommnad = new SqlCommand("SELECT Id, Value_Ar FROM dbo.PricingRoles WHERE IsDelete=0", Scon5);
                             SqlDataAdapter DA1 = new SqlDataAdapter(ContryDDLCommand);
                             SqlDataAdapter DA2 = new SqlDataAdapter(VendorDDLCommand);
                             SqlDataAdapter DA3 = new SqlDataAdapter(CalcTypeDDLCommand);
                             SqlDataAdapter DA4 = new SqlDataAdapter(ProductDDLCommnad);
+                            SqlDataAdapter DA5 = new SqlDataAdapter(PricingRoleDDLCommnad);
                             DA1.Fill(DS1);
                             DA2.Fill(DS2);
                             DA3.Fill(DS3);
                             DA4.Fill(DS4);
+                            DA5.Fill(DS5);
                             ContryDDL.DataSource = DS1;
                             VendorDDL.DataSource = DS2;
                             CalcTypeDDL.DataSource = DS3;
                             ProductsDDL.DataSource = DS4;
+                            PricingRoleDDL.DataSource = DS5;
                             ContryDDL.DataTextField = "CountryNameAR";
                             ContryDDL.DataValueField = "CountryID";      
                             VendorDDL.DataTextField = "NameAR";
@@ -247,11 +272,14 @@ namespace VPostPrices_ControlPanel
                             CalcTypeDDL.DataTextField = "NameAr";
                             CalcTypeDDL.DataValueField = "Id";                       
                             ProductsDDL.DataTextField = "NameAr";
-                            ProductsDDL.DataValueField = "Id";                       
-                            ContryDDL.DataBind();
+                            ProductsDDL.DataValueField = "Id";
+                            PricingRoleDDL.DataTextField = "Value_Ar";
+                            PricingRoleDDL.DataValueField = "Id";
+                        ContryDDL.DataBind();
                             VendorDDL.DataBind();
                             CalcTypeDDL.DataBind();
                             ProductsDDL.DataBind();
+                            PricingRoleDDL.DataBind();
                             String CountrySelect = DataBinder.Eval(e.Row.DataItem, "CountryNameAR").ToString();
                             ContryDDL.Items.FindByText(CountrySelect).Selected = true;
                             String VendorSelect = DataBinder.Eval(e.Row.DataItem, "vendorNameAR").ToString();
@@ -260,10 +288,13 @@ namespace VPostPrices_ControlPanel
                             CalcTypeDDL.Items.FindByText(CalcSelect).Selected = true;
                             String ProductSelect = DataBinder.Eval(e.Row.DataItem, "ProductNameAR").ToString();
                             ProductsDDL.Items.FindByText(ProductSelect).Selected = true;
-                            Scon1.Close();
+                            String PricingRoleSelect = DataBinder.Eval(e.Row.DataItem, "Value_Ar").ToString();
+                           PricingRoleDDL.Items.FindByText(PricingRoleSelect).Selected = true;
+                        Scon1.Close();
                             Scon2.Close();
                             Scon3.Close();
                             Scon4.Close();
+                            Scon5.Close();
                     }
 
                     catch (Exception)
@@ -328,6 +359,7 @@ namespace VPostPrices_ControlPanel
                         Scom.Parameters.AddWithValue("@ProductID",AddProductDDL.SelectedValue);
                         Scom.Parameters.AddWithValue("@CountryID",addCountrDDL.SelectedValue);
                         Scom.Parameters.AddWithValue("@VendorID",addVendorDDl.SelectedValue);
+                        Scom.Parameters.AddWithValue("@PricingRoleId", addPricingRoleDDL.SelectedValue);
                         Scom.Parameters.AddWithValue("@CalcTypeId",AddCalcTypeDDl.SelectedValue);
                         Scom.Parameters.AddWithValue("@IncreamentValue",IncremantValue.Text);
                         Scom.Parameters.AddWithValue("@MinApplyValue", MinApplyValueTextBox.Text);
@@ -338,6 +370,7 @@ namespace VPostPrices_ControlPanel
                         Scom.Parameters.AddWithValue("@MaxAmount", Textbox10.Text);
 
                         Scom.Parameters.AddWithValue("@IsPercntage",IsPercntageCheckBox.Checked);
+                        Scom.Parameters.AddWithValue("@IsPriceChange", IsPriceChangeCheckBox.Checked);
                         Scom.Parameters.AddWithValue("@Amount",AmountTextBox.Text);
                         Scom.Parameters.AddWithValue("@ApplyOrder",ApplyOrderTextBox.Text);
                         Scom.Parameters.AddWithValue("@IsActive",IsActiveCheckBox.Checked);
@@ -365,11 +398,13 @@ namespace VPostPrices_ControlPanel
             addCountrDDL.SelectedIndex = 0;
             addVendorDDl.SelectedIndex = 0;
             AddCalcTypeDDl.SelectedIndex = 0;
+            AddCalcTypeDDl.SelectedIndex = 0;
             IncremantValue.Text = null;
             MinApplyValueTextBox.Text = null;
             MaxApplyValueTextBox.Text = null;
             MaxLimitValueTextBox.Text = null;
             IsPercntageCheckBox.Checked = false;
+            IsPriceChangeCheckBox.Checked = false;
             AmountTextBox.Text = null;
             ApplyOrderTextBox.Text = null;
             Textbox9.Text = null;
