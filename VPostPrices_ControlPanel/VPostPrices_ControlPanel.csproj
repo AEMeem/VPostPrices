@@ -1,0 +1,535 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{639C61ED-6C84-46D6-90E2-E69AF1B0423F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VPostPrices_ControlPanel</RootNamespace>
+    <AssemblyName>VPostPrices_ControlPanel</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\app-material-dark-rtl.min.css" />
+    <Content Include="assets\css\app-material-dark.min.css" />
+    <Content Include="assets\css\app-material-rtl.min.css" />
+    <Content Include="assets\css\app-material.min.css" />
+    <Content Include="assets\css\app.min.css" />
+    <Content Include="assets\css\bootstrap-material-dark.min.css" />
+    <Content Include="assets\css\bootstrap-material.min.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\icons.min.css" />
+    <Content Include="assets\css\sp.css" />
+    <Content Include="assets\Deafult\AddProduct.JPG" />
+    <Content Include="assets\Deafult\Capture.JPG" />
+    <Content Include="assets\fonts\cerebrisans-bold.woff" />
+    <Content Include="assets\fonts\cerebrisans-medium.woff" />
+    <Content Include="assets\fonts\cerebrisans-regular.woff" />
+    <Content Include="assets\fonts\dripicons-v2.eot" />
+    <Content Include="assets\fonts\dripicons-v2.svg" />
+    <Content Include="assets\fonts\dripicons-v2.ttf" />
+    <Content Include="assets\fonts\dripicons-v2.woff" />
+    <Content Include="assets\fonts\DroidKufi-Regular.ttf" />
+    <Content Include="assets\fonts\fa-brands-400.ttf" />
+    <Content Include="assets\fonts\fa-brands-400.woff" />
+    <Content Include="assets\fonts\fa-brands-400.woff2" />
+    <Content Include="assets\fonts\fa-regular-400.ttf" />
+    <Content Include="assets\fonts\fa-regular-400.woff" />
+    <Content Include="assets\fonts\fa-regular-400.woff2" />
+    <Content Include="assets\fonts\fa-solid-900.ttf" />
+    <Content Include="assets\fonts\fa-solid-900.woff2" />
+    <Content Include="assets\fonts\feather.eot" />
+    <Content Include="assets\fonts\feather.svg" />
+    <Content Include="assets\fonts\feather.ttf" />
+    <Content Include="assets\fonts\feather.woff" />
+    <Content Include="assets\fonts\materialdesignicons-webfont %281%29.woff2" />
+    <Content Include="assets\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="assets\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="assets\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="assets\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="assets\fonts\Simple-Line-Icons.eot" />
+    <Content Include="assets\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="assets\fonts\Simple-Line-Icons.woff" />
+    <Content Include="assets\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="assets\fonts\themify.eot" />
+    <Content Include="assets\fonts\themify.svg" />
+    <Content Include="assets\fonts\themify.ttf" />
+    <Content Include="assets\fonts\themify.woff" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.woff2" />
+    <Content Include="assets\fonts\webFonts\URWGeometricArabic-Bold\font.woff" />
+    <Content Include="assets\fonts\webFonts\URWGeometricArabic-Bold\font.woff2" />
+    <Content Include="assets\fonts\webFonts\URWGeometricArabic-ExtraLight\font.woff" />
+    <Content Include="assets\fonts\webFonts\URWGeometricArabic-ExtraLight\font.woff2" />
+    <Content Include="assets\fonts\webFonts\URWGeometricArabic-Regular\font.woff" />
+    <Content Include="assets\fonts\webFonts\URWGeometricArabic-Regular\font.woff2" />
+    <Content Include="assets\images\00.png" />
+    <Content Include="assets\images\9-512.png" />
+    <Content Include="assets\images\bg-material.png" />
+    <Content Include="assets\images\bg-pattern-2.png" />
+    <Content Include="assets\images\bg-pattern-3.png" />
+    <Content Include="assets\images\bg-pattern.png" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\find_user.png" />
+    <Content Include="assets\images\footer-bg.png" />
+    <Content Include="assets\images\homepage.jpg" />
+    <Content Include="assets\images\logo-00.png" />
+    <Content Include="assets\images\logo-dark.png" />
+    <Content Include="assets\images\logo-light.png" />
+    <Content Include="assets\images\logo-sm.png" />
+    <Content Include="assets\images\logo-sm2.png" />
+    <Content Include="assets\images\products\mainicon_16.png" />
+    <Content Include="assets\images\products\mainicon_18.png" />
+    <Content Include="assets\images\products\mainicon_20.png" />
+    <Content Include="assets\images\products\TalabatBalagat_03.png" />
+    <Content Include="assets\images\products\TalabatBalagat_05.png" />
+    <Content Include="assets\images\SPL0.png" />
+    <Content Include="assets\images\SPL1.png" />
+    <Content Include="assets\images\users\user-1.jpg" />
+    <Content Include="assets\images\users\user-10.jpg" />
+    <Content Include="assets\images\users\user-2.jpg" />
+    <Content Include="assets\images\users\user-3.jpg" />
+    <Content Include="assets\images\users\user-4.jpg" />
+    <Content Include="assets\images\users\user-5.jpg" />
+    <Content Include="assets\images\users\user-6.jpg" />
+    <Content Include="assets\images\users\user-7.jpg" />
+    <Content Include="assets\images\users\user-8.jpg" />
+    <Content Include="assets\images\users\user-9.jpg" />
+    <Content Include="assets\img\Footer2.png" />
+    <Content Include="assets\js\app.min.js" />
+    <Content Include="assets\js\pages\fontawesome.init.js" />
+    <Content Include="assets\js\pages\materialdesign.init.js" />
+    <Content Include="assets\js\vendor.min.js" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="assets\libs\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.css" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.js" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.min.css" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.min.js" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="assets\libs\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="assets\libs\sweetalert2\sweet-alerts.init.js" />
+    <Content Include="assets\libs\sweetalert2\sweetalert2.min.css" />
+    <Content Include="assets\libs\sweetalert\jquery.sweet-alert.custom.js" />
+    <Content Include="assets\libs\sweetalert\sweetalert.css" />
+    <Content Include="assets\libs\sweetalert\sweetalert.min.js" />
+    <Content Include="assets\Main\AddDiscount.png" />
+    <Content Include="assets\Main\AddProduct.png" />
+    <Content Include="assets\Main\Countrys.png" />
+    <Content Include="assets\Main\Discount.png" />
+    <Content Include="assets\Main\DiscountPolicy.png" />
+    <Content Include="assets\Main\DiscountPolicyResricsons.png" />
+    <Content Include="assets\Main\Log.png" />
+    <Content Include="assets\Main\Product.png" />
+    <Content Include="assets\Main\ProductPrice.png" />
+    <Content Include="assets\Main\Vendor.png" />
+    <Content Include="Countries.aspx" />
+    <Content Include="Currency.aspx" />
+    <Content Include="Default_D.aspx" />
+    <Content Include="DiscountMain.aspx" />
+    <Content Include="DiscountPolicy.aspx" />
+    <Content Include="DiscountPolicyRestriction.aspx" />
+    <Content Include="Discounts.aspx" />
+    <Content Include="DiscountTypes.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="obj\Debug\CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="ProductMain.aspx" />
+    <Content Include="ProductsPrice.aspx" />
+    <Content Include="Setting.aspx" />
+    <Content Include="AddProduct.aspx" />
+    <Content Include="ShowLog.aspx" />
+    <Content Include="Site2.Master" />
+    <Content Include="Units.aspx" />
+    <Content Include="VendorCountries.aspx" />
+    <Content Include="Vendors.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm2.aspx" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="js\jquery-3.2.0.min.js" />
+    <Content Include="Resources\CSS\PostCSS.css" />
+    <Content Include="Resources\Images\ajax-loader.gif" />
+    <Content Include="Resources\Images\BG.gif" />
+    <Content Include="Resources\Images\botn.gif" />
+    <Content Include="Resources\Images\Button.gif" />
+    <Content Include="Resources\Images\Calendar_scheduleHS.png" />
+    <Content Include="Resources\Images\CalIcon.png" />
+    <Content Include="Resources\Images\Capture.GIF" />
+    <Content Include="Resources\Images\crvbutleft.gif" />
+    <Content Include="Resources\Images\crvbutright.gif" />
+    <Content Include="Resources\Images\crvtopleft.gif" />
+    <Content Include="Resources\Images\crvtopright.gif" />
+    <Content Include="Resources\Images\Delete.gif" />
+    <Content Include="Resources\Images\DeptName.gif" />
+    <Content Include="Resources\Images\EMS.jpg" />
+    <Content Include="Resources\Images\Excel_XLSX.png" />
+    <Content Include="Resources\Images\exitIcon.gif" />
+    <Content Include="Resources\Images\HomeIcon.png" />
+    <Content Include="Resources\Images\icon_download.png" />
+    <Content Include="Resources\Images\icon_download1.png" />
+    <Content Include="Resources\Images\index_up.gif" />
+    <Content Include="Resources\Images\Iqrardetail.PNG" />
+    <Content Include="Resources\Images\left.gif" />
+    <Content Include="Resources\Images\LeftBG.gif" />
+    <Content Include="Resources\Images\line.gif" />
+    <Content Include="Resources\Images\Loading.gif" />
+    <Content Include="Resources\Images\Logo.gif" />
+    <Content Include="Resources\Images\LogoSPL.png" />
+    <Content Include="Resources\Images\MasterTopBG.gif" />
+    <Content Include="Resources\Images\MasterTop_01.gif" />
+    <Content Include="Resources\Images\MasterTop_010-over.gif" />
+    <Content Include="Resources\Images\MasterTop_010.gif" />
+    <Content Include="Resources\Images\MasterTop_02-over.gif" />
+    <Content Include="Resources\Images\MasterTop_02.gif" />
+    <Content Include="Resources\Images\MasterTop_03-over.gif" />
+    <Content Include="Resources\Images\MasterTop_03.gif" />
+    <Content Include="Resources\Images\MasterTop_04-over.gif" />
+    <Content Include="Resources\Images\MasterTop_04.gif" />
+    <Content Include="Resources\Images\MasterTop_05-over.gif" />
+    <Content Include="Resources\Images\MasterTop_05.gif" />
+    <Content Include="Resources\Images\MasterTop_06-over.gif" />
+    <Content Include="Resources\Images\MasterTop_06.gif" />
+    <Content Include="Resources\Images\MasterTop_07.gif" />
+    <Content Include="Resources\Images\MasterTop_08-over.gif" />
+    <Content Include="Resources\Images\MasterTop_08.gif" />
+    <Content Include="Resources\Images\MasterTop_09-over.gif" />
+    <Content Include="Resources\Images\MasterTop_09.gif" />
+    <Content Include="Resources\Images\Menu_01.gif" />
+    <Content Include="Resources\Images\Menu_02.gif" />
+    <Content Include="Resources\Images\Menu_03.gif" />
+    <Content Include="Resources\Images\Menu_04-over.gif" />
+    <Content Include="Resources\Images\Menu_04.gif" />
+    <Content Include="Resources\Images\Menu_04_Disable.gif" />
+    <Content Include="Resources\Images\Menu_05-over.gif" />
+    <Content Include="Resources\Images\Menu_05.gif" />
+    <Content Include="Resources\Images\Menu_05_Disable.gif" />
+    <Content Include="Resources\Images\Menu_06-over.gif" />
+    <Content Include="Resources\Images\Menu_06.gif" />
+    <Content Include="Resources\Images\Menu_06_Disable.gif" />
+    <Content Include="Resources\Images\Menu_07-over.gif" />
+    <Content Include="Resources\Images\Menu_07.gif" />
+    <Content Include="Resources\Images\Menu_07_Disable.gif" />
+    <Content Include="Resources\Images\Menu_08.gif" />
+    <Content Include="Resources\Images\Menu_09.gif" />
+    <Content Include="Resources\Images\Menu_10-over.gif" />
+    <Content Include="Resources\Images\Menu_10.gif" />
+    <Content Include="Resources\Images\Menu_10_Disable.gif" />
+    <Content Include="Resources\Images\Menu_11-over.gif" />
+    <Content Include="Resources\Images\Menu_11.gif" />
+    <Content Include="Resources\Images\Menu_11_Disable.gif" />
+    <Content Include="Resources\Images\Menu_12-over.gif" />
+    <Content Include="Resources\Images\Menu_12.gif" />
+    <Content Include="Resources\Images\Menu_12_Disable.gif" />
+    <Content Include="Resources\Images\Name.gif" />
+    <Content Include="Resources\Images\Normal.jpg" />
+    <Content Include="Resources\Images\Official.jpg" />
+    <Content Include="Resources\Images\OfficialDocument.jpg" />
+    <Content Include="Resources\Images\Parcel.jpg" />
+    <Content Include="Resources\Images\PrimeEx.jpg" />
+    <Content Include="Resources\Images\printer2.png" />
+    <Content Include="Resources\Images\PWS.gif" />
+    <Content Include="Resources\Images\Register.jpg" />
+    <Content Include="Resources\Images\right.gif" />
+    <Content Include="Resources\Images\RightBG.gif" />
+    <Content Include="Resources\Images\Selecticon.gif" />
+    <Content Include="Resources\Images\settings.png" />
+    <Content Include="Resources\Images\Top.gif" />
+    <Content Include="Resources\Images\TopLogo.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_010.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_02.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_03.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_04.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_05.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_06.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_08.gif" />
+    <Content Include="Resources\Images\TopMenu_Disable_09.gif" />
+    <Content Include="Resources\Images\User.gif" />
+    <Content Include="Resources\Images\UserIcon.gif" />
+    <Content Include="Resources\Images\UserIcon.png" />
+    <Content Include="Resources\JS\jquery-1.8.2.js" />
+    <Content Include="Resources\JS\jquery-1.8.2.min.js" />
+    <Content Include="Resources\UC\ErrorBox.aspx" />
+    <Content Include="Resources\UC\YesNoConfirmBox.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Countries.aspx.cs">
+      <DependentUpon>Countries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Countries.aspx.designer.cs">
+      <DependentUpon>Countries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.aspx.cs">
+      <DependentUpon>Currency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Currency.aspx.designer.cs">
+      <DependentUpon>Currency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default_D.aspx.cs">
+      <DependentUpon>Default_D.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default_D.aspx.designer.cs">
+      <DependentUpon>Default_D.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountMain.aspx.cs">
+      <DependentUpon>DiscountMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiscountMain.aspx.designer.cs">
+      <DependentUpon>DiscountMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountPolicy.aspx.cs">
+      <DependentUpon>DiscountPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiscountPolicy.aspx.designer.cs">
+      <DependentUpon>DiscountPolicy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountPolicyRestriction.aspx.cs">
+      <DependentUpon>DiscountPolicyRestriction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiscountPolicyRestriction.aspx.designer.cs">
+      <DependentUpon>DiscountPolicyRestriction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Discounts.aspx.cs">
+      <DependentUpon>Discounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Discounts.aspx.designer.cs">
+      <DependentUpon>Discounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountTypes.aspx.cs">
+      <DependentUpon>DiscountTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiscountTypes.aspx.designer.cs">
+      <DependentUpon>DiscountTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="ProductMain.aspx.cs">
+      <DependentUpon>ProductMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductMain.aspx.designer.cs">
+      <DependentUpon>ProductMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsPrice.aspx.cs">
+      <DependentUpon>ProductsPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductsPrice.aspx.designer.cs">
+      <DependentUpon>ProductsPrice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setting.aspx.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting.aspx.designer.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowLog.aspx.cs">
+      <DependentUpon>ShowLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowLog.aspx.designer.cs">
+      <DependentUpon>ShowLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Units.aspx.cs">
+      <DependentUpon>Units.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Units.aspx.designer.cs">
+      <DependentUpon>Units.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VendorCountries.aspx.cs">
+      <DependentUpon>VendorCountries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VendorCountries.aspx.designer.cs">
+      <DependentUpon>VendorCountries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vendors.aspx.cs">
+      <DependentUpon>Vendors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vendors.aspx.designer.cs">
+      <DependentUpon>Vendors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62654</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62654/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

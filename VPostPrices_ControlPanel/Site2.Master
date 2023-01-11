@@ -1,0 +1,172 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="VPostPrices_ControlPanel.Site2" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>لوحة تحكم أسعار خدمة عالمي</title>
+    <meta name="viewport" content="width=device-width,high=device-high, initial-scale=1.0">
+    <meta content="SP" name="description" />
+    <meta content="sp.com.sa" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="Resources/Images/LogoSPL.png">
+
+<%--    <link href="assets/css/bootstrap-material-dark.min.css" rel="stylesheet" type="text/css" id="bs_dark_stylesheet" />--%>
+    <link href="assets/css/app-material-dark-rtl.min.css" rel="stylesheet" type="text/css" id="app_dark_stylesheet" />
+    <!-- App css -->
+    <link href="assets/css/bootstrap-material.min.css" rel="stylesheet" type="text/css" id="bs_default_stylesheet" />
+    <link href="assets/css/app-material-rtl.min.css" rel="stylesheet" type="text/css" id="app_default_stylesheet" />
+    <!-- icons -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="Resources/CSS/PostCSS.css" rel="stylesheet" />
+    <!-- Datepicker jquery-ui CSS -->
+
+
+
+    <link href="assets/libs/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="assets/libs/jquery-ui/jquery-ui.structure.css" rel="stylesheet" />
+    <link href="assets/libs/jquery-ui/jquery-ui.theme.css" rel="stylesheet" />
+
+    <link href="assets/css/sp.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+      
+        .labeling {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center
+        }
+
+        .divCustome {
+            margin-right: 300px;
+            margin-top: auto;
+            margin-left: auto;
+            margin-bottom: 450px
+        }
+
+        .auto-style2 {
+            display: block;
+            margin-left: auto;
+            margin-right: 0px;
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        footer {
+            position: relative;
+        }
+
+            /*footer:before {
+                content:"";
+                background: url('assets/img/Footer2.png') no-repeat;
+                width: 100%;
+                height: 111px;
+                background-size: contain;
+                z-index: -1;
+               position:  absolute;
+               margin-top:900px
+    top: 35px;
+            }*/
+    </style>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            <div class="left-side-menu">
+
+
+                <div class="h-100" data-simplebar>
+
+
+                    <asp:UpdatePanel ID="MenuPnl" runat="server" ChildrenAsTriggers="False" EnableViewState="False"
+                        UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <!--- Sidemenu -->
+                            <div id="sidebar-menu">
+
+                                <ul id="side-menu">
+
+                                    <img src="assets/images/SPL1.png" />
+                                   
+                                    <h3 class="labeling">لوحة تحكم الأسعار</h3>
+
+                                    <li>
+                                        <asp:Label ID="userNameLabel" runat="server" CssClass="labeling" BackColor="#00c8e1" ForeColor="Black"></asp:Label>
+                                    </li>
+
+
+
+                                    <li id="MainMenu_Deafult" runat="server">
+                                        <asp:LinkButton ID="lb_MainMenu_Deafult" runat="server" PostBackUrl="Default.aspx">
+                                                     <i class="mdi mdi-folder-edit-outline"></i>
+                                                     <span>الصفحة الرئيسية</span>
+                                        </asp:LinkButton>
+                                    </li>
+
+                                      <li id="Li2" runat="server">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Setting.aspx">
+                                                     <i class="mdi mdi-folder-edit-outline"></i>
+                                                     <span>الإعدادات</span>
+                                        </asp:LinkButton>
+                                    </li>
+
+
+                                    <%-- <li id="Li2" runat="server">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/VPost_Main.aspx">
+                                                     <i class="mdi mdi-folder-edit-outline"></i>
+                                                     <span>لوحة تحكم VPost</span>
+                                        </asp:LinkButton>
+                                    </li>--%>
+
+
+                                  
+                                    <li id="Li1" runat="server">
+                                        <asp:LinkButton ID="lnkExit_top" runat="server" CssClass="dropdown-item notify-item" OnClick="lnkExit_top_Click">
+                                    <i class="fe-log-out"></i>
+                                    <span>تسجيل الخروج</span>
+                                        </asp:LinkButton>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- End Sidebar -->
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <div class="divCustome">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+
+
+    <footer>
+    </footer>
+
+
+
+
+</body>
+</html>
