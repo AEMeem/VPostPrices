@@ -76,7 +76,7 @@ namespace VPostPrices_ControlPanel
                     SqlCommand CountrCommand = new SqlCommand("SELECT CountryID,CountryNameAR FROM dbo.Countries WHERE IsDelete=0", Scon2);
                     SqlCommand VendorCommand = new SqlCommand("SELECT Id,NameAR FROM dbo.Vendors WHERE IsDelete=0", Scon3);
                     SqlCommand CalctypeCommnad = new SqlCommand("SELECT Id,NameAr FROM dbo.CalcTypes WHERE IsDelete=0", Scon4);
-                    SqlCommand PriceRoleCommnad = new SqlCommand("SELECT Id,Value_Ar FROM dbo.PricingRoles WHERE IsDelete=0", Scon4);
+                    SqlCommand PriceRoleCommnad = new SqlCommand("SELECT Id,Value_Ar FROM dbo.PricingRoles", Scon4);
                     SqlDataAdapter DA1 = new SqlDataAdapter(ProductCommnad);
                     SqlDataAdapter DA2 = new SqlDataAdapter(CountrCommand);
                     SqlDataAdapter DA3 = new SqlDataAdapter(VendorCommand);
@@ -239,6 +239,7 @@ namespace VPostPrices_ControlPanel
                 {
                     try
                     {
+                            
 
                             Scon1 = new SqlConnection(ConnectionString);
                             Scon2 = new SqlConnection(ConnectionString);
@@ -249,7 +250,7 @@ namespace VPostPrices_ControlPanel
                             VendorDDLCommand = new SqlCommand("SELECT Id,NameAR FROM dbo.Vendors",Scon2);
                             CalcTypeDDLCommand = new SqlCommand("SELECT Id,NameAr FROM dbo.CalcTypes", Scon3);
                             ProductDDLCommnad = new SqlCommand("SELECT Id,NameAr FROM dbo.Products WHERE IsDelete=0", Scon4);
-                            PricingRoleDDLCommnad = new SqlCommand("SELECT Id, Value_Ar FROM dbo.PricingRoles WHERE IsDelete=0", Scon5);
+                            PricingRoleDDLCommnad = new SqlCommand("SELECT Id, Value_Ar FROM dbo.PricingRoles", Scon5);
                             SqlDataAdapter DA1 = new SqlDataAdapter(ContryDDLCommand);
                             SqlDataAdapter DA2 = new SqlDataAdapter(VendorDDLCommand);
                             SqlDataAdapter DA3 = new SqlDataAdapter(CalcTypeDDLCommand);
@@ -289,7 +290,8 @@ namespace VPostPrices_ControlPanel
                             String ProductSelect = DataBinder.Eval(e.Row.DataItem, "ProductNameAR").ToString();
                             ProductsDDL.Items.FindByText(ProductSelect).Selected = true;
                             String PricingRoleSelect = DataBinder.Eval(e.Row.DataItem, "Value_Ar").ToString();
-                           PricingRoleDDL.Items.FindByText(PricingRoleSelect).Selected = true;
+                            if(!string.IsNullOrEmpty(PricingRoleSelect))
+                                PricingRoleDDL.Items.FindByText(PricingRoleSelect).Selected = true;
                         Scon1.Close();
                             Scon2.Close();
                             Scon3.Close();
@@ -434,6 +436,20 @@ namespace VPostPrices_ControlPanel
             }
         }
 
+        protected void IsPriceChangeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (IsPriceChangeCheckBox.Checked) { 
+                addPricingRoleDDL.Enabled = true;
+                addPricingRoleDDL.Visible = true;
+            }
+            else
+            {
+                addPricingRoleDDL.Enabled = false;
+                addPricingRoleDDL.Visible = false;
+                addPricingRoleDDL.ClearSelection();
+            }
+            
+        }
     }
 
     

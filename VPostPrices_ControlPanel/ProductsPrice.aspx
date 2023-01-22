@@ -95,14 +95,14 @@
               <tr>
                 <td>هل يتغير السعر علي حسب الحجم؟</td>
                 <td class="auto-style3">
-                    <asp:CheckBox ID="IsPriceChangeCheckBox" runat="server"   />
+                    <asp:CheckBox ID="IsPriceChangeCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="IsPriceChangeCheckBox_CheckedChanged"   />
                   </td>            
             </tr>
             
               <tr>
                 <td><label>الدولة</label></td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="addPricingRoleDDL" runat="server">
+                    <asp:DropDownList ID="addPricingRoleDDL" runat="server" Enabled="False" Visible="False" Width="241px">
                     </asp:DropDownList>
                   </td>            
             </tr>
@@ -149,7 +149,7 @@
                     <asp:DropDownList ID="PricingRoleDDL" runat="server"></asp:DropDownList>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label10" runat="server" Text='<%# Bind("Value_Ar") %>'></asp:Label>
+                    <asp:Label ID="Label20" runat="server" Text='<%# Bind("Value_Ar") == null ? "--" : Bind("Value_Ar") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="مقدم الخدمة">
