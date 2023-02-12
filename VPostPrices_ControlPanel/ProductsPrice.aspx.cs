@@ -156,12 +156,15 @@ namespace VPostPrices_ControlPanel
             String VendorSelect = VendorDDL.SelectedValue;
             String CalcTypeSelect = CalcTypeDDL.SelectedValue;
             String ProductSelect = ProductDDL.SelectedValue.ToString();
-            String PricingRoleSelect = PricingRoleDDl.SelectedValue.ToString();
+
+            var PricingRoleSelect = ((CheckBox)((GridView1.Rows[e.RowIndex].Cells[13].Controls[1]))).Checked ? PricingRoleDDl.SelectedValue.ToString() : null;
 
             SqlDataSource1.UpdateParameters["ProductID"].DefaultValue = ProductSelect;
             SqlDataSource1.UpdateParameters["CountryID"].DefaultValue = ContrySelect;
             SqlDataSource1.UpdateParameters["VendorID"].DefaultValue = VendorSelect;
             SqlDataSource1.UpdateParameters["CalcTypeId"].DefaultValue = CalcTypeSelect;
+
+            //SqlDataSource1.UpdateParameters["PricingRoleId"].DefaultValue = PricingRoleSelect;
             SqlDataSource1.UpdateParameters["PricingRoleId"].DefaultValue = PricingRoleSelect;
 
             SqlDataSource1.UpdateParameters["UpdateBy"].DefaultValue= "ayman";
@@ -178,7 +181,7 @@ namespace VPostPrices_ControlPanel
                         SCom.Parameters.AddWithValue("@Id",Convert.ToString(((Label)GridView1.Rows[e.RowIndex].FindControl("Id")).Text));
                         SCom.Parameters.AddWithValue("@ProductID", ProductSelect);
                         SCom.Parameters.AddWithValue("@CountryID", Convert.ToInt32(ContrySelect));
-                        SCom.Parameters.AddWithValue("@PricingRoleId", Convert.ToInt32(ContrySelect));
+                        SCom.Parameters.AddWithValue("@PricingRoleId", Convert.ToInt32(PricingRoleSelect));
                         SCom.Parameters.AddWithValue("@VendorID", Convert.ToInt32(VendorSelect));
                         SCom.Parameters.AddWithValue("@CalcTypeId", Convert.ToInt32(CalcTypeSelect));
                         SCom.Parameters.AddWithValue("@IncreamentValue", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox1")).Text));
@@ -187,11 +190,11 @@ namespace VPostPrices_ControlPanel
                         SCom.Parameters.AddWithValue("@MaxLimitValue", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox4")).Text));
                         SCom.Parameters.AddWithValue("@MinAmount", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox7")).Text));
                         SCom.Parameters.AddWithValue("@MaxAmount", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox8")).Text));
-                        SCom.Parameters.AddWithValue("@IsPercntage", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[9].Controls[0]).Checked));
-                        SCom.Parameters.AddWithValue("@IsPriceChange", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[10].Controls[0]).Checked));
+                        SCom.Parameters.AddWithValue("@IsPercntage", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[12].Controls[0]).Checked));
+                        SCom.Parameters.AddWithValue("@IsPriceChange", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[13].Controls[0]).Checked));
                         SCom.Parameters.AddWithValue("@Amount", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox5")).Text));
                         SCom.Parameters.AddWithValue("@ApplyOrder", Convert.ToString(((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox6")).Text));
-                        SCom.Parameters.AddWithValue("@IsActive", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[13].Controls[0]).Checked));
+                        SCom.Parameters.AddWithValue("@IsActive", Convert.ToString(((CheckBox)GridView1.Rows[e.RowIndex].Cells[16].Controls[0]).Checked));
                         SCom.Parameters.AddWithValue("@UpdateBy", "ayman");
                         SCom.Parameters.AddWithValue("@UpdateDate",UpdateDate);
                         SCon.Open();
@@ -438,18 +441,46 @@ namespace VPostPrices_ControlPanel
 
         protected void IsPriceChangeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (IsPriceChangeCheckBox.Checked) { 
+            if (IsPriceChangeCheckBox.Checked) {
+
+
+                pricingTypeLable.Enabled = true;
+                pricingTypeLable.Visible = true;
                 addPricingRoleDDL.Enabled = true;
                 addPricingRoleDDL.Visible = true;
+
+                
             }
             else
             {
+                pricingTypeLable.Enabled = false;
+                pricingTypeLable.Visible = false;
                 addPricingRoleDDL.Enabled = false;
                 addPricingRoleDDL.Visible = false;
                 addPricingRoleDDL.ClearSelection();
             }
             
         }
+        protected void Checkedpricechangecheckbox(object sender, EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            GridViewRow gvr = (GridViewRow)chk.NamingContainer;
+            var pricingTypeDDL = (DropDownList)GridView1.Rows[gvr.RowIndex].Cells[3].FindControl("PricingRoleDDL");
+            if (((CheckBox)sender).Checked)
+            {
+                
+                pricingTypeDDL.Visible = true;
+                pricingTypeDDL.Enabled = true;
+            }
+            else
+            {
+                pricingTypeDDL.Visible = false;
+                pricingTypeDDL.Enabled = false;
+            }
+
+        }
+
+
     }
 
     

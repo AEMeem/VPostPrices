@@ -13,56 +13,56 @@
         <h3>إضافة سعر على تفضيلات الشحن</h3>
         <table style="width: 100%;">         
             <tr>
-                <td> <label>أسم تفضيل الشحن</label></td>
+                <td class="auto-style3"> <label>أسم تفضيل الشحن</label></td>
                 <td class="auto-style3"><asp:DropDownList id="AddProductDDL" runat="server"></asp:DropDownList></td>
             </tr>
             <tr>
-                <td> <label>الدولة</label></td>
+                <td class="auto-style3"> <label>الدولة</label></td>
                 <td class="auto-style3"> <asp:DropDownList ID="addCountrDDL" runat="server"></asp:DropDownList></td>
             </tr>
             <tr>
-                <td><label>مقدم الخدمة</label></td>
+                <td class="auto-style3"><label>مقدم الخدمة</label></td>
                 <td class="auto-style3"><asp:DropDownList ID="addVendorDDl" runat="server" ></asp:DropDownList></td>             
             </tr>
              <tr>
-                <td><label>طريقة الحساب</label></td>
+                <td class="auto-style3"><label>طريقة الحساب</label></td>
                 <td class="auto-style3"> <asp:DropDownList ID="AddCalcTypeDDl" runat="server" ></asp:DropDownList></td>              
             </tr>
              <tr>
-                <td><label>القيمة التزايدية</label></td>
+                <td class="auto-style3"><label>القيمة التزايدية</label></td>
                 <td class="auto-style3"><asp:textbox ID="IncremantValue" runat="server" ></asp:textbox></td>
                 <td><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Red" ErrorMessage="حقل مطلوب" ControlToValidate="IncremantValue" ValidationGroup="ProductPrice"></asp:RequiredFieldValidator></td>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ForeColor="Red"  ValidationGroup="ProductPrice"  ValidationExpression="^\d*\.?\d*$" ErrorMessage="يجب أن تكون القيمة رقمية" ControlToValidate="IncremantValue"></asp:RegularExpressionValidator></td>
              </tr>
              <tr>
-                <td><label>اقل قيمة مطبقة</label></td>
+                <td class="auto-style3"><label>اقل قيمة مطبقة</label></td>
                 <td class="auto-style3"><asp:textbox ID="MinApplyValueTextBox" runat="server" ></asp:textbox></td>   
                 <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ValidationGroup="ProductPrice"  runat="server" ErrorMessage="حقل مطلوب" ControlToValidate="MinApplyValueTextBox"></asp:RequiredFieldValidator>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ForeColor="Red"  ValidationGroup="ProductPrice"  ValidationExpression="^[-+]?\d+(\.\d+)?$" ErrorMessage="يجب أن تكون القيمة رقمية" ControlToValidate="MinApplyValueTextBox"></asp:RegularExpressionValidator></td>
                  <td><asp:CompareValidator ID="CompareValidator3" runat="server" ErrorMessage="أقل قيمة مطبقة يجب أن تكون  اصغر من  أو تساوي أعلى قيمة مطبقة" ForeColor="Red" ControlToValidate="MinApplyValueTextBox" ControlToCompare="MaxApplyValueTextBox" Operator="LessThanEqual" ValidationGroup="ProductPrice" Type="Double"></asp:CompareValidator></td>
                  </tr>
              <tr>
-                <td><label>أعلى قيمة مطبقة</label></td>
+                <td class="auto-style3"><label>أعلى قيمة مطبقة</label></td>
                 <td class="auto-style3"><asp:textbox ID="MaxApplyValueTextBox" runat="server" ></asp:textbox></td>
                  <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ValidationGroup="ProductPrice"  runat="server" ErrorMessage="حقل مطلوب" ControlToValidate="MaxApplyValueTextBox"></asp:RequiredFieldValidator></td>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator29" ForeColor="Red" runat="server"  ValidationGroup="ProductPrice"  ValidationExpression="^[-+]?\d+(\.\d+)?$" ErrorMessage="يجب أن تكون القيمة رقمية" ControlToValidate="MaxApplyValueTextBox"></asp:RegularExpressionValidator></td>
                  <td><asp:CompareValidator ID="CompareValidator1" runat="server" ForeColor="Red" ErrorMessage="أعلى قيمة مطبقة يجب أن تكون  أعلى من أو تساوي اصغر قيمة مطبفة" ControlToValidate="MaxApplyValueTextBox" ControlToCompare="MinApplyValueTextBox" Operator="GreaterThanEqual" ValidationGroup="ProductPrice" Type="Double"></asp:CompareValidator></td>
             </tr>
              <tr>
-                <td><label>أكثر قيمة للحد</label></td>
+                <td class="auto-style3"><label>أكثر قيمة للحد</label></td>
                 <td class="auto-style3"><asp:textbox ID="MaxLimitValueTextBox" runat="server" ></asp:textbox></td>
                 <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ValidationGroup="ProductPrice"  runat="server" ErrorMessage="حقل مطلوب" ControlToValidate="MaxLimitValueTextBox"></asp:RequiredFieldValidator></td>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator5" ForeColor="Red" runat="server"  ValidationGroup="ProductPrice"  ValidationExpression="^[-+]?\d+(\.\d+)?$" ErrorMessage="يجب أن تكون القيمة رقمية" ControlToValidate="MaxLimitValueTextBox"></asp:RegularExpressionValidator></td>
             </tr>
              <tr>
-                <td><label>القيمة</label></td>
+                <td class="auto-style3"><label>القيمة</label></td>
                 <td class="auto-style3"><asp:textbox ID="AmountTextBox" runat="server" ></asp:textbox></td> 
                  <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ValidationGroup="ProductPrice"  runat="server" ErrorMessage="حقل مطلوب" ControlToValidate="AmountTextBox"></asp:RequiredFieldValidator></td>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator4" ForeColor="Red" runat="server"  ValidationGroup="ProductPrice"  ValidationExpression="^[-+]?\d+(\.\d+)?$" ErrorMessage="يجب أن تكون القيمة رقمية" ControlToValidate="AmountTextBox"></asp:RegularExpressionValidator></td>
             </tr>
 
                          <tr>
-                <td><label>أقل قيمة</label></td>
+                <td class="auto-style3"><label>أقل قيمة</label></td>
                 <td class="auto-style3"><asp:textbox ID="Textbox9" runat="server" ></asp:textbox></td> 
                  <td><asp:RequiredFieldValidator ID="RequiredFieldValidator12" ForeColor="Red" ValidationGroup="ProductPrice"  runat="server" ErrorMessage="حقل مطلوب" ControlToValidate="Textbox9"></asp:RequiredFieldValidator></td>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator2" ForeColor="Red" runat="server"  ValidationGroup="ProductPrice"  ValidationExpression="^[-+]?\d+(\.\d+)?$" ErrorMessage="يجب أن تكون القيمة رقمية" ControlToValidate="Textbox9"></asp:RegularExpressionValidator></td>
@@ -71,7 +71,7 @@
                              </tr>
 
                          <tr>
-                <td><label>أعلى قيمة</label></td>
+                <td class="auto-style3"><label>أعلى قيمة</label></td>
                 <td class="auto-style3"><asp:textbox ID="Textbox10" runat="server" ></asp:textbox></td> 
                  <td><asp:RequiredFieldValidator ID="RequiredFieldValidator13" ForeColor="Red" ValidationGroup="ProductPrice"  runat="server" ErrorMessage="حقل مطلوب" ControlToValidate="Textbox10"></asp:RequiredFieldValidator></td>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator3" ForeColor="Red" runat="server"  ValidationGroup="ProductPrice"  ValidationExpression="^[-+]?\d+(\.\d+)?$" ErrorMessage="يجب أن تكون القيمة رقمية" ControlToValidate="Textbox10"></asp:RegularExpressionValidator></td>
@@ -81,38 +81,41 @@
 
 
              <tr>
-                <td><label>تنفيذ الترتيب</label></td>
+                <td class="auto-style3"><label>تنفيذ الترتيب</label></td>
                 <td class="auto-style3"><asp:textbox ID="ApplyOrderTextBox" runat="server" ></asp:textbox></td>
                 <td><asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ForeColor="Red" ErrorMessage="حقل مطلوب" ControlToValidate="ApplyOrderTextBox" ValidationGroup="ProductPrice"></asp:RequiredFieldValidator></td>
                  <td><asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ForeColor="Red" ValidationGroup="ProductPrice" ControlToValidate="ApplyOrderTextBox" ErrorMessage="يجب ان تكون القيمة رقمية وصحيحة" ValidationExpression="^\d{1,45}$"></asp:RegularExpressionValidator></td>
              </tr>
                 
               <tr>
-                <td><label>نسبة مئوية؟</label></td>
+                <td class="auto-style3"><label>نسبة مئوية؟</label></td>
                 <td class="auto-style3"><asp:Checkbox ID="IsPercntageCheckBox" runat="server" ></asp:Checkbox></td>            
             </tr>
             
               <tr>
-                <td>هل يتغير السعر علي حسب الحجم؟</td>
+                <td class="auto-style3">هل يتغير السعر علي حسب الحجم؟</td>
                 <td class="auto-style3">
                     <asp:CheckBox ID="IsPriceChangeCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="IsPriceChangeCheckBox_CheckedChanged"   />
                   </td>            
             </tr>
             
               <tr>
-                <td><label>الدولة</label></td>
+               
                 <td class="auto-style3">
+                    <asp:Label ID="pricingTypeLable" runat="server" Enabled="False" Text="نوع التسعير" Visible="False"></asp:Label>
+                  </td>            
+                  <td>
                     <asp:DropDownList ID="addPricingRoleDDL" runat="server" Enabled="False" Visible="False" Width="241px">
                     </asp:DropDownList>
-                  </td>            
+                  </td>
             </tr>
             
              <tr>
-                <td><label>تفعيل</label></td>
+                <td class="auto-style3"><label>تفعيل</label></td>
                 <td class="auto-style3"><asp:checkbox ID="IsActiveCheckBox" runat="server"  ></asp:checkbox></td>           
             </tr>
              <tr>
-                <td><asp:Button ID="AddPoductPrice" Text="إضافة المنتج" runat="server"  ValidationGroup="ProductPrice"  OnClick="AddPoductPrice_Click" /></td>    
+                <td class="auto-style3"><asp:Button ID="AddPoductPrice" Text="إضافة المنتج" runat="server"  ValidationGroup="ProductPrice"  OnClick="AddPoductPrice_Click" /></td>    
             </tr>
         </table>
     </div>
@@ -238,7 +241,16 @@
 
 
             <asp:CheckBoxField DataField="IsPercntage" HeaderText="مئوي" />
-            <asp:CheckBoxField DataField="IsPriceChange" HeaderText="السعر يتغير حسب الحجم" />
+
+            <asp:TemplateField HeaderText="السعر يتغير حسب الحجم">
+                <ItemTemplate>
+                        <%# Eval("IsPriceChange").ToString().Equals("True") ? " نعم " : " لا " %>
+                    </ItemTemplate>
+               <EditItemTemplate>
+                  <asp:CheckBox  id="IsPriceChange" checked='<%# Bind("IsPriceChange") %>' runat="server" AutoPostBack="true" OnCheckedChanged="Checkedpricechangecheckbox"  />
+               </EditItemTemplate>
+            </asp:TemplateField>
+           
             <asp:TemplateField HeaderText="القيمة">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Amount") %>'></asp:TextBox>
